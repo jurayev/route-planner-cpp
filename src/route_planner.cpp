@@ -108,8 +108,8 @@ void RoutePlanner::AStarSearch() {
         if (current_node == RoutePlanner::end_node) {
             std::cout << "Path found" << std::endl;
             RoutePlanner::m_Model.path = RoutePlanner::ConstructFinalPath(current_node);
-            for (auto p : RoutePlanner::m_Model.path) {
-                std::cout << "x : " << p.x << " y : " << p.y << std::endl;
+            for (auto &p: RoutePlanner::m_Model.path) {
+                std::cout << "next waypoint -> x : " << p.x << " y : " << p.y << std::endl;
             }
             return;
         }
