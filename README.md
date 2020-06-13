@@ -25,6 +25,17 @@ git clone https://github.com/jurayev/route-planner-osm.git --recurse-submodules
 * IO2D
   * Installation instructions for all operating systems can be found [here](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md) or [here](https://github.com/mylescallan/OpenStreetMaps_C-/blob/master/README.md)
   * This library must be built in a place where CMake `find_package` will be able to find it
+  * Alternative steps, if above instructions does not work, for building io2d library on Mac/Unix:
+  ```
+  git clone --recurse-submodules https://github.com/cpp-io2d/P0267_RefImpl
+  cd P0267_RefImpl
+  mkdir Debug
+  cd Debug
+  cmake --config Debug "-DCMAKE_BUILD_TYPE=Debug" -DIO2D_DEFAULT=COREGRAPHICS_MAC ..
+  cmake --build .
+  make
+  sudo make install
+  ```
 
 ## Compiling and Running
 
