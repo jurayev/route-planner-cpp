@@ -8,3 +8,5 @@ bin/
 lib/
 .DS_Store
 .vscode
+clang/
+P0267_RefImpl/
