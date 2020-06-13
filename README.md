@@ -56,4 +56,4 @@ The testing executable is also placed in the `build` directory. From within `bui
 ```
 
 ## License
-The content of this repository is licensed under a [MIT License].(https://github.com/jurayev/route-planner-osm/blob/master/LICENSE)
+The content of this repository is licensed under a [MIT License](https://github.com/jurayev/route-planner-osm/blob/master/LICENSE).
