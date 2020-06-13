@@ -17,7 +17,7 @@ find_package(Cairo)
 find_package(GraphicsMagick)
 
 # Set IO2D flags
-# set(IO2D_WITHOUT_SAMPLES 1)
+set(IO2D_WITHOUT_SAMPLES 1)
 set(IO2D_WITHOUT_TESTS 1)
 
 # Add the pugixml and GoogleTest library subdirectories

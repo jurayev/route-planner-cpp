@@ -16,7 +16,7 @@ class RouteModel : public Model {
         float h_value = std::numeric_limits<float>::max();
         float g_value = 0.0;
         bool visited = false;
-      std::vector<Node *> neighbors;
+        std::vector<Node *> neighbors;
 
         void FindNeighbors();
         float distance(Node other) const {
