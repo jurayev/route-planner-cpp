@@ -100,8 +100,6 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
 void RoutePlanner::AStarSearch() {
     RouteModel::Node *current_node = nullptr;
     current_node = RoutePlanner::start_node;
-
-    // TODO: Implement your solution here.
     current_node->visited = true;
     RoutePlanner::open_list.emplace_back(current_node);
 
