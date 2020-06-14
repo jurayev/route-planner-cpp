@@ -31,6 +31,4 @@ private:
   RouteModel &m_Model;
 };
 
-bool CompareFValues(RouteModel::Node const *node1, RouteModel::Node const *node2);
-
 #endif

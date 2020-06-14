@@ -34,7 +34,7 @@ float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
 
 void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     current_node->FindNeighbors();
-    for (RouteModel::Node *neighbor : current_node->neighbors) {
+    for (auto *neighbor : current_node->neighbors) {
         if (!neighbor->visited) {
             neighbor->parent = current_node;
             neighbor->g_value = current_node->g_value + current_node->distance(*neighbor);
@@ -54,15 +54,16 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
-    std::sort(RoutePlanner::open_list.begin(), RoutePlanner::open_list.end(), CompareFValues);
+    std::sort(
+        RoutePlanner::open_list.begin(), 
+        RoutePlanner::open_list.end(), 
+        [](const RouteModel::Node *n1, const RouteModel::Node *n2) {return n1->g_value + n1->h_value > n2->g_value + n2->h_value;}
+    );
     RouteModel::Node *cheapest_node = RoutePlanner::open_list.back();
     RoutePlanner::open_list.pop_back();
     return cheapest_node;
 }
 
-bool CompareFValues(RouteModel::Node const *node1, RouteModel::Node const *node2) {
-    return node1->g_value + node1->h_value > node2->g_value + node2->h_value;
-}
 
 // TODO 6: Complete the ConstructFinalPath method to return the final path found from your A* search.
 // Tips:
@@ -106,11 +107,7 @@ void RoutePlanner::AStarSearch() {
     while (!RoutePlanner::open_list.empty()) {
         current_node = NextNode();
         if (current_node == RoutePlanner::end_node) {
-            std::cout << "Path found" << std::endl;
             RoutePlanner::m_Model.path = RoutePlanner::ConstructFinalPath(current_node);
-            for (auto &p: RoutePlanner::m_Model.path) {
-                std::cout << "next waypoint -> x : " << p.x << " y : " << p.y << std::endl;
-            }
             return;
         }
         RoutePlanner::AddNeighbors(current_node);
